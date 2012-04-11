@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="stef-sdk" default="compile">
+	
+	<property name="ceylon.home" value="/usr/share/ceylon/0.2"/>
+	<property name="ceylon.ant.lib" value="${ceylon.home}/repo/com/redhat/ceylon/ant/0.2/com.redhat.ceylon.ant-0.2.jar"/>
+    <property name="ceylonc" value="${ceylon.home}/bin/ceylonc"/>
+	
+	<target name="ceylon-ant-taskdefs">
+	  <path id="ant-tasks">
+	    <pathelement location="${ceylon.ant.lib}"/>
+	  </path>
+	  <taskdef name="ceylonc"
+	    classname="com.redhat.ceylon.ant.Ceylonc"
+	    classpathref="ant-tasks"/>
+	  <taskdef name="ceylond"
+	    classname="com.redhat.ceylon.ant.Ceylond"
+	    classpathref="ant-tasks"/>
+	  <taskdef name="ceylon"
+	    classname="com.redhat.ceylon.ant.Ceylon"
+	    classpathref="ant-tasks"/>
+	</target>
+
+	<target name="compile" depends="ceylon-ant-taskdefs">
+		<echo>Compiling Java IOP / Collections</echo>
+		<exec executable="${ceylonc}">
+			<arg value="-out"/>
+            <arg value="modules-manual"/>
+			<arg value="source/fr/epardaud/iop/*.java"/>
+            <arg value="source/fr/epardaud/collections/impl/*.java"/>
+		</exec>
+        <echo>Compiling IOP</echo>
+        <ceylonc out="modules-manual">
+            <module name="fr.epardaud.iop"/>
+        </ceylonc>
+        <echo>Compiling test / collections / JSON</echo>
+        <ceylonc out="modules-manual">
+        	<module name="fr.epardaud.test"/>
+            <module name="fr.epardaud.collections"/>
+            <module name="fr.epardaud.json"/>
+        </ceylonc>
+        <echo>Compiling Java net</echo>
+        <exec executable="${ceylonc}">
+            <arg value="-out"/>
+            <arg value="modules-manual"/>
+            <arg value="source/fr/epardaud/net/impl/*.java"/>
+        </exec>
+        <echo>Compiling net / n_test / c_test</echo>
+        <ceylonc out="modules-manual">
+            <module name="fr.epardaud.net"/>
+            <module name="fr.epardaud.n_test"/>
+            <module name="fr.epardaud.c_test"/>
+        </ceylonc>
+    </target>
+
+    <target name="doc" depends="ceylon-ant-taskdefs">
+        <echo>Doc for IOP / Collections / test / JSON / net</echo>
+        <ceylond out="modules-manual">
+            <module name="fr.epardaud.iop"/>
+            <module name="fr.epardaud.test"/>
+            <module name="fr.epardaud.collections"/>
+            <module name="fr.epardaud.json"/>
+            <module name="fr.epardaud.net"/>
+        </ceylond>
+	</target>
+
+	<target name="test" depends="compile">
+		<ceylon module="fr.epardaud.n_test/0.1" run="fr.epardaud.n_test.testAll">
+			<rep url="modules-manual"/>
+		</ceylon>
+        <ceylon module="fr.epardaud.c_test/0.1" run="fr.epardaud.c_test.testAll">
+            <rep url="modules-manual"/>
+        </ceylon>
+        <ceylon module="fr.epardaud.json/0.1">
+            <rep url="modules-manual"/>
+        </ceylon>
+	</target>
+
+	<target name="zip" depends="">
+		<zip destfile="repo.zip">
+			<fileset dir="modules-manual">
+				<exclude name="**/*.index"/>
+				<include name="fr/epardaud/collections/**"/>
+                <include name="fr/epardaud/test/**"/>
+                <include name="fr/epardaud/iop/**"/>
+                <include name="fr/epardaud/net/**"/>
+                <include name="fr/epardaud/json/**"/>
+			</fileset>
+		</zip>
+	</target>
+	
+	<target name="clean">
+		<delete dir="modules-manual" failonerror="no"/>
+        <delete file="repo.zip"/>
+	</target>
+</project>
