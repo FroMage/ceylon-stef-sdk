@@ -11,7 +11,7 @@ class Parser(String str){
             while(true){
                 String key = parseString();
                 eatSpacesUntil(`:`);
-                String|Boolean|Number|Object|Array|Nothing val = parseValue();
+                String|Boolean|Integer|Float|Object|Array|Nothing val = parseValue();
                 obj.put(key, val);
                 
                 eatSpaces();
@@ -33,7 +33,7 @@ class Parser(String str){
         eatSpaces();
         if(!check(`]`)){
             while(true){
-                String|Boolean|Number|Object|Array|Nothing val = parseValue();
+                String|Boolean|Integer|Float|Object|Array|Nothing val = parseValue();
                 arr.add(val);
 
                 eatSpaces();
@@ -48,7 +48,7 @@ class Parser(String str){
         return arr;
     }
     
-    String|Boolean|Number|Object|Array|Nothing parseValue(){
+    String|Boolean|Integer|Float|Object|Array|Nothing parseValue(){
         eatSpaces();
         Character c = char();
         if(c == `{`){
@@ -76,7 +76,7 @@ class Parser(String str){
         throw Exception("Invalid value: expecting object, array, string, number, true, false, null but got " c.string "");
     }
     
-    Number parseNumber(){
+    Integer|Float parseNumber(){
         eatSpaces();
         Boolean negative = check(`-`);
         Integer wholePart = parseDigits();

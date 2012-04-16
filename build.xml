@@ -70,7 +70,7 @@
         <ceylon module="fr.epardaud.c_test/0.1" run="fr.epardaud.c_test.testAll">
             <rep url="modules-manual"/>
         </ceylon>
-        <ceylon module="fr.epardaud.json/0.1">
+        <ceylon module="fr.epardaud.json/0.2">
             <rep url="modules-manual"/>
         </ceylon>
 	</target>
@@ -79,11 +79,13 @@
 		<zip destfile="repo.zip">
 			<fileset dir="modules-manual">
 				<exclude name="**/*.index"/>
+				<!--
 				<include name="fr/epardaud/collections/**"/>
                 <include name="fr/epardaud/test/**"/>
                 <include name="fr/epardaud/iop/**"/>
-                <include name="fr/epardaud/net/**"/>
                 <include name="fr/epardaud/json/**"/>
+				-->
+                <include name="fr/epardaud/net/**"/>
 			</fileset>
 		</zip>
 	</target>

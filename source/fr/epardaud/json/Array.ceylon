@@ -2,11 +2,11 @@ import fr.epardaud.collections { ... }
 
 by "Stéphane Épardaud"
 doc "Represents a JSON Array"
-shared class Array() satisfies Iterable<String|Boolean|Number|Object|Array|Nothing> {
-    MutableList<String|Boolean|Number|Object|Array|NullInstance> list = LinkedList<String|Boolean|Number|Object|Array|NullInstance>();
+shared class Array() satisfies Iterable<String|Boolean|Integer|Float|Object|Array|Nothing> {
+    MutableList<String|Boolean|Integer|Float|Object|Array|NullInstance> list = LinkedList<String|Boolean|Integer|Float|Object|Array|NullInstance>();
     
     doc "Adds a new value at the end of this array"
-    shared void add(String|Boolean|Number|Object|Array|Nothing val){
+    shared void add(String|Boolean|Integer|Float|Object|Array|Nothing val){
         if(exists val){
             list.add(val);
         }else{
@@ -15,13 +15,13 @@ shared class Array() satisfies Iterable<String|Boolean|Number|Object|Array|Nothi
     }
     
     doc "Gets the value at the given index, or `null` if it does not exist"
-    shared String|Boolean|Number|Object|Array|Nothing get(Integer index){
+    shared String|Boolean|Integer|Float|Object|Array|Nothing get(Integer index){
         value val = list[index];
         if(is NullInstance val){
             return null;
         }
         switch(val)
-        case (is String|Boolean|Number|Object|Array) {
+        case (is String|Boolean|Integer|Float|Object|Array) {
             return val;
         }else{
             // key does not exist
@@ -40,10 +40,10 @@ shared class Array() satisfies Iterable<String|Boolean|Number|Object|Array|Nothi
     }
     
     doc "Returns an iterator for this array"
-    shared actual Iterator<String|Boolean|Number|Object|Array|Nothing> iterator {
-        object it satisfies Iterator<String|Boolean|Number|Object|Array|Nothing> {
+    shared actual Iterator<String|Boolean|Integer|Float|Object|Array|Nothing> iterator {
+        object it satisfies Iterator<String|Boolean|Integer|Float|Object|Array|Nothing> {
             variable Integer index := 0;
-            shared actual String|Boolean|Number|Object|Array|Nothing|Finished next() {
+            shared actual String|Boolean|Integer|Float|Object|Array|Nothing|Finished next() {
                 if(index < size){
                     return get(index++);
                 }

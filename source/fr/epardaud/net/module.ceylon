@@ -1,6 +1,6 @@
 Module module {
     name = 'fr.epardaud.net';
-    version = '0.2';
+    version = '0.5';
     by = {"Stéphane Épardaud"};
     license = 'Apache Software License';
     doc = "A module that contains URI stuff";
@@ -15,7 +15,7 @@ Module module {
         },
         Import {
             name = 'fr.epardaud.json';
-            version = '0.1';
+            version = '0.2';
         }
     };
 }
