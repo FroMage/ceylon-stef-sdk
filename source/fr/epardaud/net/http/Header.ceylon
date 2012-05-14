@@ -1,10 +1,10 @@
 by "Stéphane Épardaud"
 doc "Represents an HTTP Header"
-shared class Header(String name, String contents){
+shared class Header(name, contents){
     
     doc "Header name"
-    shared String name = name;
+    shared String name;
     
     doc "Header value"
-    shared String contents = contents;
+    shared String contents;
 }

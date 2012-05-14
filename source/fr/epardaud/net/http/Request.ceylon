@@ -6,15 +6,15 @@ import java.net { URL, HttpURLConnection, URLConnection }
 
 by "Stéphane Épardaud"
 doc "Represents an HTTP Request"
-shared class Request(URI uri, String initialMethod = "GET"){
+shared class Request(uri, method = "GET"){
     doc "This request URI, must be absolute"
-    shared URI uri = uri;
+    shared URI uri;
     
     doc "The list of request headers"
     shared MutableList<Header> headers = LinkedList<Header>();
     
     doc "The request method, such as `GET`, `POST`…"
-    shared variable String method := initialMethod;
+    shared variable String method;
     
     if(uri.relative){
         throw Exception("Can't request a relative URI");

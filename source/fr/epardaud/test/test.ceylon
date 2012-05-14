@@ -5,11 +5,11 @@ import fr.epardaud.iop { toIterable }
 
 List<Result> results = LinkedList<Result>();
 
-class Result(String? title, String? message = null, Boolean passed = false, Exception? exception = null){
-    shared String? title = title;
-    shared String? message = message;
-    shared Boolean passed = passed;
-    shared Exception? exception = exception;
+class Result(title, message = null, passed = false, exception = null){
+    shared String? title;
+    shared String? message;
+    shared Boolean passed;
+    shared Exception? exception;
     shared void print() {
         if(exists title){
             process.write("[" title "] ");
