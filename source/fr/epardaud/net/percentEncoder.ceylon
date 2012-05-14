@@ -1,4 +1,4 @@
-//import fr.epardaud.net.impl { JavaURLEncoder { jencodePart = encodePart }  }
+import fr.epardaud.net.impl { JavaURLEncoder { jencodePart = encodePart }  }
 
 import java.util { BitSet }
 
@@ -273,6 +273,6 @@ shared object percentEncoder {
     }
     
     String encodePart(String str, String encoding, BitSet fragment){
-        return bottom;//jencodePart(str, encoding, fragment);
+        return jencodePart(str, encoding, fragment);
     }
 }

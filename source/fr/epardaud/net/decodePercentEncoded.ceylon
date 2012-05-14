@@ -1,4 +1,4 @@
-//import fr.epardaud.net.impl { JavaURLDecoder { jdecodeURL = decodeURL }  }
+import fr.epardaud.net.impl { JavaURLDecoder { jdecodeURL = decodeURL }  }
 
 import java.lang { JString = String }
 
@@ -44,7 +44,7 @@ shared String decodePercentEncoded(String str){
     }
     return JString(array, 0, w, "UTF-8").string;
     */
-    return bottom;//jdecodeURL(str);
+    return jdecodeURL(str);
 }
 
 void test(){

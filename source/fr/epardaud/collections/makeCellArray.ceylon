@@ -1,5 +1,5 @@
-//import fr.epardaud.collections.impl { Arrays { jmakeCellArray = makeCellArray } }
+import fr.epardaud.collections.impl { Arrays { jmakeCellArray = makeCellArray } }
 
 Array<T> makeCellArray<T>(Integer size){
-    return bottom;//jmakeCellArray<T>(size);
+    return jmakeCellArray<T>(size);
 }

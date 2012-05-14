@@ -1,6 +1,6 @@
 import java.net { HttpURLConnection }
 import fr.epardaud.iop { readString }
-//import fr.epardaud.iop { toOptionalString }
+import fr.epardaud.iop { toOptionalString }
 import fr.epardaud.json { JSONObject = Object, parseJSON = parse }
 
 by "Stéphane Épardaud"
@@ -28,7 +28,7 @@ shared class Response(HttpURLConnection con){
     
     doc "The response encoding as defined by the `Content-Type` header"
     shared String? encoding {
-        return bottom;//toOptionalString(con.contentEncoding);
+        return toOptionalString(con.contentEncoding);
     }
     
     doc "The response contents, as a String"
