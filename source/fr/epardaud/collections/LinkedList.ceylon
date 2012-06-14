@@ -137,7 +137,7 @@ shared class LinkedList<T>() satisfies MutableList<T> {
     
     doc "Not implemented yet"
     // FIXME
-    shared actual T?[] items(Integer[] keys) {
+    shared actual T?[] items(Integer... keys) {
         return bottom;
     }
     
@@ -155,7 +155,7 @@ shared class LinkedList<T>() satisfies MutableList<T> {
     shared actual Boolean defines(Integer index) {
         return index >= 0 && index < _size;
     }
-    shared actual Boolean definesAny(Integer[] keys) {
+    shared actual Boolean definesAny(Integer... keys) {
         for(Integer key in keys){
             if(defines(key)){
                 return true;
@@ -163,7 +163,7 @@ shared class LinkedList<T>() satisfies MutableList<T> {
         }
         return false;
     }
-    shared actual Boolean definesEvery(Integer[] keys) {
+    shared actual Boolean definesEvery(Integer... keys) {
         for(Integer key in keys){
             if(!defines(key)){
                 return false;
@@ -185,7 +185,7 @@ shared class LinkedList<T>() satisfies MutableList<T> {
         return false;
     }
     
-    shared actual Boolean containsAny(Object[] elements) {
+    shared actual Boolean containsAny(Object... elements) {
         for(Object elem in elements){
             if(contains(elem)){
                 return true;
@@ -193,7 +193,7 @@ shared class LinkedList<T>() satisfies MutableList<T> {
         }
         return false;
     }
-    shared actual Boolean containsEvery(Object[] elements) {
+    shared actual Boolean containsEvery(Object... elements) {
         for(Object elem in elements){
             if(!contains(elem)){
                 return false;

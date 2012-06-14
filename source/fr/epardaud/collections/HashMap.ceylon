@@ -121,7 +121,7 @@ shared class HashMap<Key, Item>()
     
     // FIXME
     doc "Not implemented"
-    shared actual Item?[] items(Object[] keys) {
+    shared actual Item?[] items(Object... keys) {
         return bottom;
     }
     
@@ -310,7 +310,7 @@ shared class HashMap<Key, Item>()
     shared actual Boolean defines(Object key) {
         return exists item(key);
     }
-    shared actual Boolean definesAny(Object[] keys) {
+    shared actual Boolean definesAny(Object... keys) {
         for(Object key in keys){
             if(defines(key)){
                 return true;
@@ -318,7 +318,7 @@ shared class HashMap<Key, Item>()
         }
         return false;
     }
-    shared actual Boolean definesEvery(Object[] keys) {
+    shared actual Boolean definesEvery(Object... keys) {
         for(Object key in keys){
             if(!defines(key)){
                 return false;
@@ -342,7 +342,7 @@ shared class HashMap<Key, Item>()
         }
         return false;
     }
-    shared actual Boolean containsEvery(Object[] elements) {
+    shared actual Boolean containsEvery(Object... elements) {
         for(Object element in elements){
             if(contains(element)){
                 return true;
@@ -350,7 +350,7 @@ shared class HashMap<Key, Item>()
         }
         return false;
     }
-    shared actual Boolean containsAny(Object[] elements) {
+    shared actual Boolean containsAny(Object... elements) {
         for(Object element in elements){
             if(!contains(element)){
                 return false;
