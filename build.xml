@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="stef-sdk" default="compile">
 	
-	<property name="ceylon.home" value="/usr/share/ceylon/0.2"/>
-	<property name="ceylon.ant.lib" value="${ceylon.home}/repo/com/redhat/ceylon/ant/0.2/com.redhat.ceylon.ant-0.2.jar"/>
+	<property name="ceylon.home" value="/home/stephane/src/java-eclipse/ceylon-dist/dist/"/>
+	<property name="ceylon.ant.lib" value="${ceylon.home}/repo/com/redhat/ceylon/ant/0.3/com.redhat.ceylon.ant-0.3.jar"/>
     <property name="ceylonc" value="${ceylon.home}/bin/ceylonc"/>
 	
 	<target name="ceylon-ant-taskdefs">
