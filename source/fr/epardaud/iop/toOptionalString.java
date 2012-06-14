@@ -1,6 +1,6 @@
 package fr.epardaud.iop;
 
-@com.redhat.ceylon.compiler.java.metadata.Ceylon
+@com.redhat.ceylon.compiler.java.metadata.Ceylon(major = 1)
 @com.redhat.ceylon.compiler.java.metadata.Method
 public final class toOptionalString {
 
